@@ -1,0 +1,1 @@
+web: gunicorn needsmap.wsgi:application

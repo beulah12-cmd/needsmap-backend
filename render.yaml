@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: needsmap-backend
+    runtime: python
+    buildCommand: pip install -r requirements.txt && python manage.py migrate
+    startCommand: gunicorn needsmap.wsgi:application
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: needsmap-db
+          property: connectionString
+      - key: SECRET_KEY
+        generateValue: true
+      - key: WEB_CONCURRENCY
+        value: 4
+      - key: DEBUG
+        value: False
