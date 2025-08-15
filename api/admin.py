@@ -1,3 +1,5 @@
 from django.contrib import admin
+from .models import NeedPost, Response
 
-# Register your models here.
+admin.site.register(NeedPost)
+admin.site.register(Response)
