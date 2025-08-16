@@ -2,7 +2,10 @@ services:
   - type: web
     name: needsmap-backend
     runtime: python
-    buildCommand: pip install -r requirements.txt && python manage.py migrate
+    buildCommand: |
+      pip install -r requirements.txt
+      python manage.py collectstatic --noinput
+      python manage.py migrate
     startCommand: gunicorn needsmap.wsgi:application
     envVars:
       - key: DATABASE_URL
