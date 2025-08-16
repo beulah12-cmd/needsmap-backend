@@ -18,3 +18,5 @@ services:
         value: 4
       - key: DEBUG
         value: False
+      - key: DISABLE_COLLECTSTATIC  # Add this
+        value: 0
